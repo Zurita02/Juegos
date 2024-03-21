@@ -17,6 +17,11 @@ food = vector(0, 0)
 snake = [vector(10, 0)]
 aim = vector(0, -10)
 
+colors = ['blue', 'green', 'yellow', 'orange', 'purple']
+
+# Elegir colores aleatorios para la serpiente y la comida
+snake_color = choice(colors)
+food_color = choice([color for color in colors if color != 'red'])
 
 def change(x, y):
     """Esta fucnion cambia la direccion de la serpiente."""
@@ -31,6 +36,19 @@ def inside(head):
 
 def move():
     """Mueve la serpiente hacia enfrente una casilla."""
+    head = snake[-1].copy()
+    head.move(aim)
+    global snake_color, food_color
+
+    color(snake_color)
+    for body in snake:
+        square(body.x, body.y, 9, snake_color)
+
+    color(food_color)
+    square(food.x, food.y, 9, food_color)
+
+    update()  # Actualizar la ventana con los nuevos colores
+
     head = snake[-1].copy()
     head.move(aim)
 
@@ -51,12 +69,12 @@ def move():
     clear()
 
     for body in snake:
-        square(body.x, body.y, 9, 'black')
-
-    square(food.x, food.y, 9, 'green')
+        square(body.x, body.y, 9, snake_color)  # Usa el color aleatorio de la serpiente
+    square(food.x, food.y, 9, food_color)  # Usa el color aleatorio de la comida
     update()
     ontimer(move, 100)
 
+   
 
 setup(420, 420, 370, 0)
 hideturtle()
