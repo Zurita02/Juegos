@@ -1,14 +1,4 @@
-"""Memory, puzzle game of number pairs.
-
-Exercises:
-
-1. Count and print how many taps occur.
-2. Decrease the number of tiles to a 4x4 grid.
-3. Detect when all tiles are revealed.
-4. Center single-digit tile.
-5. Use letters instead of tiles.
-"""
-
+"""Memory, puzzle game of number pairs."""
 from random import *
 from turtle import *
 
@@ -22,7 +12,7 @@ hide = [True] * 64
 tap_count= 0
 
 def square(x, y):
-    """Draw white square with black outline at (x, y)."""
+    """Dibuja el tablero de juego."""
     up()
     goto(x, y)
     down()
@@ -35,17 +25,20 @@ def square(x, y):
 
 
 def index(x, y):
-    """Convert (x, y) coordinates to tiles index."""
+    """Convierte coordendas a indices."""
     return int((x + 200) // 50 + ((y + 200) // 50) * 8)
 
 
 def xy(count):
-    """Convert tiles count to (x, y) coordinates."""
+    """Convierte los titulos a coordenadas."""
     return (count % 8) * 50 - 200, (count // 8) * 50 - 200
 
+def all_revealed():
+    """Verifica si todas las fichas están reveladas."""
+    return all(not hide[i] for i in range(len(hide)))
 
 def tap(x, y):
-    """Update mark and hidden tiles based on tap."""
+    """actualizas las casillas escondidas en base a los taps y cuenta el numero de taps."""
     spot = index(x, y)
     mark = state['mark']
     global tap_count  # Indica que tap_count es una variable global
@@ -68,9 +61,9 @@ def tap(x, y):
         hide[spot] = False
         hide[mark] = False
         state['mark'] = None
-        
+    
 def draw():
-    """Draw image and tiles."""
+    """Dibuja la imagen."""
     clear()
     goto(0, 0)
     shape(car)
