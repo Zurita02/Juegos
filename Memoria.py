@@ -41,8 +41,8 @@ def tap(x, y):
     """actualizas las casillas escondidas en base a los taps y cuenta el numero de taps."""
     spot = index(x, y)
     mark = state['mark']
-    global tap_count  # Indica que tap_count es una variable global
-    tap_count += 1  # Incrementa el contador de toques
+    global tap_count  
+    tap_count += 1  
     spot = index(x, y)
     mark = state['mark']
 
@@ -53,7 +53,7 @@ def tap(x, y):
         hide[mark] = False
         state['mark'] = None
 
-    print("Número de toques:", tap_count)  # Imprime el número actual de toques
+    print("Número de toques:", tap_count) 
 
     if mark is None or mark == spot or tiles[mark] != tiles[spot]:
         state['mark'] = spot
