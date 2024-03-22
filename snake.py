@@ -2,7 +2,7 @@
 
 from random import randrange
 from turtle import *
-
+from random import choice
 from freegames import square, vector
 
 food = vector(0, 0)
