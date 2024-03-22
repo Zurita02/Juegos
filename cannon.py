@@ -1,12 +1,4 @@
-"""Cannon, hitting targets with projectiles.
-
-Exercises
-
-1. Keep score by counting target hits.
-2. Vary the effect of gravity.
-3. Apply gravity to the targets.
-4. Change the speed of the ball.
-"""
+"""Cannon, hitting targets with projectiles."""
 
 from random import randrange
 from turtle import *
@@ -23,12 +15,12 @@ def tap(x, y):
     if not inside(ball):
         ball.x = -199
         ball.y = -199
-        speed.x = (x + 200) / 25
-        speed.y = (y + 200) / 25
+        speed.x = (x + 200) / 12
+        speed.y = (y + 200) / 12
 
 
 def inside(xy):
-    """Return True if xy within screen."""
+    """Verifica que las coordenadas esten dentro del rango."""
     return -200 < xy.x < 200 and -200 < xy.y < 200
 
 
@@ -48,18 +40,18 @@ def draw():
 
 
 def move():
-    """Move ball and targets."""
+    """Mueve a la pelota y a los objetivos."""
     if randrange(40) == 0:
         y = randrange(-150, 150)
         target = vector(200, y)
         targets.append(target)
 
     for target in targets:
-        target.x -= 0.5
+        target.x -= 1.5
 
 #Checa si la pelota está en la pantalla
     if inside(ball):
-        speed.y -= 0.35
+        speed.y -= 0.7
         ball.move(speed)
 
     dupe = targets.copy()
