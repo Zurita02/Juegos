@@ -1,17 +1,8 @@
-"""Paint, for drawing shapes.
-
-Exercises
-
-1. Add a color.
-2. Complete circle.
-3. Complete rectangle.
-4. Complete triangle.
-5. Add width parameter.
-"""
+"""Paint, for drawing shapes."""
 
 from turtle import *
-
 from freegames import vector
+import math
 
 #Esta función dibuja una línea
 def line(start, end):
@@ -54,12 +45,19 @@ def rectangle(start, end):
 
 
 def circle(start, end):
-    """Draw rectangle from start to end."""
-    pass  # TODO
+    """Dibuja un circulo."""
+    radius = math.sqrt((end.x - start.x)**2 + (end.y - start.y)**2)
+    up()
+    goto(start.x + radius, start.y)
+    down()
+    begin_fill()
+    circle = Turtle()  
+    circle.circle(radius)  
+    end_fill()
 
 
 def triangle(start, end):
-    """Draw triangle from start to end."""
+    """Dibuja un triangulo."""
     up()
     # Esta función mueve la tortuga a donde hace click el usuario
     goto(start.x, start.y)
@@ -74,7 +72,7 @@ def triangle(start, end):
 
 
 def tap(x, y):
-    """Store starting point or draw shape."""     
+    """almacena el punto inicial para dibujar la figura"""     
     start = state['start']
 
     if start is None:
@@ -87,7 +85,7 @@ def tap(x, y):
 
 
 def store(key, value):
-    """Store value in state at key."""
+    """Almacena el valor en el estado bajo la clave."""
     state[key] = value
 
 
