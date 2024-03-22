@@ -31,18 +31,29 @@ def square(start, end):
     begin_fill()
 
     for count in range(4):
+r        forward(end.x - start.x)
+        left(90)
+
+    end_fill()
+
+
+def rectangle(start, end):
+    up()
+    # Esta función mueve la tortuga a donde hace click el usuario
+    goto(start.x, start.y)
+    down()
+    begin_fill()
+
+    for count in range(2):
         forward(end.x - start.x)
+        left(90)
+        forward(end.y - start.y)
         left(90)
 
     end_fill()
 
 
 def circle(start, end):
-    """Draw circle from start to end."""
-    pass  # TODO
-
-
-def rectangle(start, end):
     """Draw rectangle from start to end."""
     pass  # TODO
 
