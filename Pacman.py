@@ -122,7 +122,8 @@ def move():
     dot(20, 'yellow')
 
     for point, course in ghosts:
-        if valid(point + course):
+        #Si Pacman está cerca se mueve a él, prioriza cercanía
+        if valid(point + course) or abs(point -pacman) < 20:
             point.move(course)
         else:
             options = [
