@@ -31,7 +31,7 @@ def square(start, end):
     begin_fill()
 
     for count in range(4):
-r        forward(end.x - start.x)
+        forward(end.x - start.x)
         left(90)
 
     end_fill()
@@ -60,11 +60,21 @@ def circle(start, end):
 
 def triangle(start, end):
     """Draw triangle from start to end."""
-    pass  # TODO
+    up()
+    # Esta función mueve la tortuga a donde hace click el usuario
+    goto(start.x, start.y)
+    down()
+    begin_fill()
+
+    for count in range(3):
+        forward(end.x - start.x)
+        left(120)
+
+    end_fill()
 
 
 def tap(x, y):
-    """Store starting point or draw shape."""
+    """Store starting point or draw shape."""     
     start = state['start']
 
     if start is None:
