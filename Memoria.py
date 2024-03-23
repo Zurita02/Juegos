@@ -5,7 +5,8 @@ from turtle import *
 from freegames import path
 
 car = path('car.gif')
-tiles = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "Kk", "L", "M", "N", "O", "P", "Q", "¡!", "@", "#", "$", "%", "&", "//", "()", "=", "¿?", "<>", "::", "[]", "||"] *2
+# Se cambia la lista de objetos a usar en el memorama
+tiles = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "¡!", "@", "#", "$", "%", "&", "//", "()", "=", "?", "<", "::", "[]", "||"] * 2
 state = {'mark': None}
 hide = [True] * 64
 
@@ -79,7 +80,11 @@ def draw():
     if mark is not None and hide[mark]:
         x, y = xy(mark)
         up()
-        goto(x +5, y )
+        # Se ajusta la posición de los elementos en el cuadro dependiendo si es alfabético o signos
+        if tiles[mark].isalpha():
+            goto(x + 13, y )
+        else:
+            goto(x + 15, y+3 )
         color('black')
         write(tiles[mark], font=('Arial', 30, 'normal'))
 
