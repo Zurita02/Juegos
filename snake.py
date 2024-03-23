@@ -37,6 +37,9 @@ def move():
         square(body.x, body.y, 9, snake_color)
 
     color(food_color)
+
+    #Se elige coordenada al zar para mover la comida cada vez que avanza la serpiente
+    food.x, food.y = choice([(food.x +10, food.y), (food.x -10, food.y), (food.x, food.y +10), (food.x, food.y -10), (food.x, food.y)])
     square(food.x, food.y, 9, food_color)
 
     update()  # Actualizar la ventana con los nuevos colores
